@@ -1,0 +1,40 @@
+1° SELECT id, name, surname 
+FROM `students` 
+WHERE date_of_birth >= '1990-01-01' 
+AND date_of_birth <= '1990-12-31';
+
+2° SELECT id, name 
+FROM `courses` 
+WHERE cfu > 10;
+
+3° SELECT * FROM students WHERE date_of_birth <='1994-06-19';
+scusami ho dimenticato di mettere <=
+
+4° SELECT * 
+FROM `courses` 
+WHERE period = 'I semestre' 
+AND year = 1;
+
+5° SELECT * 
+FROM `exams` 
+WHERE date = '2020-06-20' 
+AND hour >= '14:00:00';
+
+6° SELECT * 
+FROM `degrees` 
+WHERE name 
+LIKE '%Magistrale%';
+
+7° SELECT * 
+FROM `departments`;
+
+8° SELECT id,name,surname 
+FROM `teachers` 
+WHERE phone IS NULL;
+
+9° INSERT INTO students (degree_id, name, surname, date_of_birth, fiscal_code, enrolment_date, registration_number, email)
+VALUES ('1', 'Davide', 'Di Giacomo', '2001-06-15', 'DGCDVD15G06A989T', '2024-06-19', '', 'davidedigiak@hotmail.it');
+
+10° UPDATE teachers SET office_number = 126 WHERE name = 'pietro' AND surname = 'Rizzo';
+
+11° DELETE FROM students WHERE name = 'Davide' AND surname = 'Di Giacomo';
