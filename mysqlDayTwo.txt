@@ -1,3 +1,5 @@
+GROUB BY
+
 1° ****
 SELECT COUNT(students.id) AS numero_studenti_per_anno, 
 YEAR(students.enrolment_date)
@@ -22,3 +24,76 @@ SELECT COUNT(degrees.name) AS numero_di_corsi, degrees.department_id
 FROM degrees
 GROUP BY degrees.department_id
 ******
+
+JOIN
+
+1° *******
+SELECT students.name, students.surname, degrees.name
+FROM students
+INNER JOIN degrees ON degrees.id=students.degree_id
+WHERE degrees.name LIKE '%econo%';
+*********
+
+2°*******
+SELECT degrees.id, degrees.name, departments.name AS nome_dipartimento
+FROM degrees
+INNER JOIN departments ON departments.id=degrees.id
+WHERE degrees.level = 'magistrale' AND departments.name LIKE '%neuro%';
+********
+
+3°*******
+SELECT teachers.id, teachers.name, teachers.surname, courses.name 
+FROM teachers 
+JOIN course_teacher 
+ON course_teacher.teacher_id=teachers.id
+JOIN courses 
+ON courses.id=course_teacher.course_id
+WHERE teachers.name = 'fulvio' AND teachers.surname = 'amato';
+********
+
+4°*******
+SELECT students.id AS id, 
+students.name AS nome,
+students.surname AS cognome,
+degrees.name,
+departments.name
+FROM students
+JOIN degrees 
+ON degrees.id=students.degree_id
+JOIN departments 
+ON departments.id=degrees.department_id
+ORDER BY students.surname ASC, students.name ASC;
+********
+
+4°/2*******
+SELECT *,
+degrees.name,
+departments.name
+FROM students
+RIGHT JOIN degrees 
+ON degrees.id=students.degree_id
+RIGHT JOIN departments 
+ON departments.id=degrees.department_id
+ORDER BY students.surname ASC, students.name ASC;
+********
+
+5°********
+SELECT * FROM degrees
+RIGHT JOIN courses
+ON courses.degree_id=degrees.id
+RIGHT JOIN course_teacher
+ON course_teacher.course_id=courses.id
+RIGHT JOIN teachers 
+ON teachers.id=course_teacher.teacher_id;
+******
+
+6°******
+SELECT * FROM teachers
+JOIN course_teacher
+ON course_teacher.teacher_id=teachers.id
+JOIN courses
+ON courses.id=course_teacher.course_id
+JOIN degrees
+ON degrees.id=courses.degree_id
+WHERE degrees.name LIKE '%matematica%';
+********
